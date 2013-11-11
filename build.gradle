@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+jar {
+	manifest {
+		attributes 'Implementation-Title':'TechSearch', 'Implementation-Version': '0.0.1'
+	}		
+}
+
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	compile 'commons-collections:commons-collections:3.2'
+	testCompile 'junit:junit:4+'
+}
+
+task "create-dirs" << {
+	sourceSets*.java.srcDirs*.each { it.mkdirs() }
+	sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}
